@@ -26,6 +26,7 @@ class Settings:
         self.background_image = 'assets/backgrounds/game_background.png'
 
         self.shoot_sound = 'assets/sounds/shoot.wav'
+        self.new_wave_sound = 'assets/sounds/new_wave.wav'
         self.upgrade_sound = 'assets/sounds/upgrade.wav'
         self.sell_sound = 'assets/sounds/sell.wav'
         self.enemy_hit_sound = 'assets/sounds/enemy_hit.wav'

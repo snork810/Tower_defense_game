@@ -1,13 +1,14 @@
 import pygame
 from bullet import Bullet
 import math
-
+from settings import Settings
 
 class Tower(pygame.sprite.Sprite):
     def __init__(self, position, game):
         super().__init__()
         self.position = pygame.math.Vector2(position)
         self.game = game
+        self.settings = Settings()
 
         self.image = None
         self.rect = None
@@ -17,6 +18,7 @@ class Tower(pygame.sprite.Sprite):
         self.last_shot_time = pygame.time.get_ticks()
         self.level = 1
         self.original_image = self.image
+        self.shoot_sound = pygame.mixer.Sound(self.settings.shoot_sound)
 
     def upgrade_cost(self):
         return 100 * self.level
@@ -83,6 +85,7 @@ class BasicTower(Tower):
         self.rate_of_fire = 1000
 
     def shoot(self, target, bullets_group):
+        self.shoot_sound.play()
         new_bullet = Bullet(self.position, target.position, self.damage, self.game)
         bullets_group.add(new_bullet)
 

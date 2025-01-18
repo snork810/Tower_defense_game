@@ -1,11 +1,14 @@
 import pygame
 from enemy import Enemy
 from tower import BasicTower, SniperTower
+from settings import Settings
 
 
 class Level:
     def __init__(self, game):
         self.game = game
+        self.settings = Settings()
+        self.new_wave_sound = pygame.mixer.Sound(self.settings.new_wave_sound)
         self.enemies = pygame.sprite.Group()
         self.towers = pygame.sprite.Group()
         self.bullets = pygame.sprite.Group()
@@ -25,6 +28,7 @@ class Level:
         self.start_next_wave()
         self.font = pygame.font.SysFont("Arial", 24)
 
+
     def start_next_wave(self):
         if self.current_wave < len(self.waves):
             self.spawned_enemies = 0
@@ -32,6 +36,7 @@ class Level:
 
     def spawn_next_enemy(self):
         if self.spawned_enemies < len(self.waves[self.current_wave]):
+            self.new_wave_sound.play()
             enemy_info = self.waves[self.current_wave][self.spawned_enemies]
             new_enemy = Enemy(**enemy_info, game=self.game)
             self.enemies.add(new_enemy)
