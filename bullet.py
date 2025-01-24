@@ -6,7 +6,7 @@ class Bullet(pygame.sprite.Sprite):
     def __init__(self, start_pos, target_pos, damage, game):
         super().__init__()
         self.game = game
-        self.image = pygame.image.load('assets/bullets/basic_bullet.png').convert_alpha()
+        self.image = pygame.image.load('tower_defence/assets/bullets/basic_bullet.png').convert_alpha()
         self.rect = self.image.get_rect(center=start_pos)
         self.position = Vector2(start_pos)
         self.target = Vector2(target_pos)

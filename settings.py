@@ -18,19 +18,20 @@ class Settings:
         ]
 
         self.tower_sprites = {
-            'basic': 'assets/towers/basic_tower.png',
-            'sniper': 'assets/towers/sniper_tower.png',
+            'basic': 'tower_defence/assets/towers/basic_tower.png',
+            'sniper': 'tower_defence/assets/towers/sniper_tower.png',
+            'money': 'tower_defence/assets/towers/money_tower.png'
         }
-        self.enemy_sprite = 'assets/enemies/basic_enemy.png'
-        self.bullet_sprite = 'assets/bullets/basic_bullet.png'
-        self.background_image = 'assets/backgrounds/game_background.png'
+        self.enemy_sprite = 'tower_defence/assets/enemies/basic_enemy.png'
+        self.bullet_sprite = 'tower_defence/assets/bullets/basic_bullet.png'
+        self.background_image = 'tower_defence/assets/backgrounds/game_background.png'
 
-        self.shoot_sound = 'assets/sounds/shoot.wav'
-        self.new_wave_sound = 'assets/sounds/new_wave.wav'
-        self.upgrade_sound = 'assets/sounds/upgrade.wav'
-        self.sell_sound = 'assets/sounds/sell.wav'
-        self.enemy_hit_sound = 'assets/sounds/enemy_hit.wav'
-        self.background_music = 'assets/sounds/background_music.mp3'
+        self.shoot_sound = 'tower_defence/assets/sounds/shoot.wav'
+        self.new_wave_sound = 'tower_defence/assets/sounds/new_wave.wav'
+        self.upgrade_sound = 'tower_defence/assets/sounds/upgrade.wav'
+        self.sell_sound = 'tower_defence/assets/sounds/sell.wav'
+        self.enemy_hit_sound = 'tower_defence/assets/sounds/enemy_hit.wav'
+        self.background_music = 'tower_defence/assets/sounds/background_music.mp3'
 
         self.starting_money = 500
         self.lives = 20

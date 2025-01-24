@@ -1,6 +1,6 @@
 import pygame
 from enemy import Enemy
-from tower import BasicTower, SniperTower
+from tower import BasicTower, SniperTower, MoneyTower
 from settings import Settings
 
 
@@ -14,11 +14,11 @@ class Level:
         self.bullets = pygame.sprite.Group()
         self.waves = [
             [{'path': self.game.settings.enemy_path, 'speed': 1, 'health': 100,
-              'image_path': 'assets/enemies/basic_enemy.png'}] * 5,
+              'image_path': 'tower_defence/assets/enemies/basic_enemy.png'}] * 5,
             [{'path': self.game.settings.enemy_path, 'speed': 1.5, 'health': 150,
-              'image_path': 'assets/enemies/fast_enemy.png'}] * 7,
+              'image_path': 'tower_defence/assets/enemies/fast_enemy.png'}] * 7,
             [{'path': self.game.settings.enemy_path, 'speed': 0.75, 'health': 200,
-              'image_path': 'assets/enemies/strong_enemy.png'}] * 4,
+              'image_path': 'tower_defence/assets/enemies/strong_enemy.png'}] * 4,
         ]
         self.current_wave = 0
         self.spawned_enemies = 0
@@ -43,7 +43,7 @@ class Level:
             self.spawned_enemies += 1
 
     def attempt_place_tower(self, mouse_pos, tower_type):
-        tower_classes = {'basic': BasicTower, 'sniper': SniperTower}
+        tower_classes = {'basic': BasicTower, 'sniper': SniperTower, 'money' : MoneyTower}
         if tower_type in tower_classes and self.game.settings.starting_money >= self.game.settings.tower_cost:
             grid_pos = self.game.grid.get_grid_position(mouse_pos)
             if self.game.grid.is_spot_available(grid_pos):

@@ -1,13 +1,15 @@
 import pygame
 from pygame.math import Vector2
+from settings import Settings
 
 
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, path, speed=2, health=10, image_path=None, game = None):
 
         super().__init__()
+        self.settings = Settings()
         self.image = pygame.Surface((30, 40))
-        self.image = pygame.image.load(image_path).convert_alpha()
+        self.image = pygame.image.load('tower_defence/assets/enemies/basic_enemy.png').convert_alpha()
         self.rect = self.image.get_rect()
         self.game = game
         self.path = path
@@ -21,6 +23,7 @@ class Enemy(pygame.sprite.Sprite):
         self.health -= amount
         if self.health <= 0:
             self.kill()
+            self.settings.starting_money += 30
 
     def update(self):
         if self.path_index < len(self.path) - 1:
