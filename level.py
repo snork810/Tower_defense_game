@@ -2,7 +2,7 @@ import pygame
 from enemy import Enemy
 from tower import BasicTower, SniperTower, MoneyTower
 from settings import Settings
-
+import random
 
 class Level:
     def __init__(self, game):
@@ -12,12 +12,13 @@ class Level:
         self.enemies = pygame.sprite.Group()
         self.towers = pygame.sprite.Group()
         self.bullets = pygame.sprite.Group()
+        self.ways = [self.game.settings.enemy_path, self.game.settings.enemy_path2]
         self.waves = [
-            [{'path': self.game.settings.enemy_path, 'speed': 1, 'health': 100,
+            [{'path': random.choice(self.ways), 'speed': 1, 'health': 100,
               'image_path': 'tower_defence/assets/enemies/basic_enemy.png'}] * 5,
-            [{'path': self.game.settings.enemy_path, 'speed': 1.5, 'health': 150,
+            [{'path': random.choice(self.ways), 'speed': 1.5, 'health': 150,
               'image_path': 'tower_defence/assets/enemies/fast_enemy.png'}] * 7,
-            [{'path': self.game.settings.enemy_path, 'speed': 0.75, 'health': 200,
+            [{'path': random.choice(self.ways), 'speed': 0.75, 'health': 200,
               'image_path': 'tower_defence/assets/enemies/strong_enemy.png'}] * 4,
         ]
         self.current_wave = 0
@@ -86,7 +87,7 @@ class Level:
 
     def draw_path(self, screen):
         pygame.draw.lines(screen, (0, 128, 0), False, self.game.settings.enemy_path, 5)
-
+        pygame.draw.lines(screen, (128, 0, 0), False, self.game.settings.enemy_path2, 5)
     def draw_grid(self, screen):
         for pos in self.game.settings.tower_positions:
             pygame.draw.circle(screen, (128, 0, 0), pos, 10)
